@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+    xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+          http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+        http://www.springframework.org/schema/aop
+	      http://www.springframework.org/schema/aop/sping-aop-4.3.xsd">
+
+  <!-- 在struts.xml的action class填入这个id -->
+  <bean id="loginAction" class="myAction.LoginAction" />
+
+	<!-- 利用容器创建实例，赋值，并依赖注入 -->
+	<bean id="man" class="myInterfaceImpl.Man">
+	  <property name="name" value="Jack"/> <!-- 给man.name赋值为Jack -->
+	  <property name="lover" ref="woman"/> <!-- 给man.lover赋值为woman -->
+	</bean>
+	<bean id="woman" class="myInterfaceImpl.Woman">
+	  <property name="name" value="Mary"/>
+	  <property name="lover" ref="man"/>
+	</bean>
+	
+</beans>
